@@ -9,7 +9,7 @@ public class Account {
     private Double balance;
     private Double withdrawLimit;
 
-  public Account(String holder, Integer accountNumber, Double balance, Double withdrawLimit){
+  public Account(String holder, int accountNumber, double balance, double withdrawLimit){
       this.holder = holder;
       this.accountNumber = accountNumber;
       this.balance = balance;
@@ -29,10 +29,10 @@ public class Account {
       return withdrawLimit;
   }
 
-  public void setBalance(Double balance){
+  public void setBalance(double balance){
       this.balance = balance;
   }
-  public void setWithdrawLimit(Double withdrawLimit){
+  public void setWithdrawLimit(double withdrawLimit){
       this.withdrawLimit = withdrawLimit;
   }
 
@@ -43,7 +43,7 @@ public class Account {
       balance = balance+amount;
   }
 
-  public void withdrawCash(double amount) throws Exception{
+  public void withdrawCash(double amount){
       if(amount<0){
           throw new IllegalArgumentException("Ivalid typed amount");
       }
