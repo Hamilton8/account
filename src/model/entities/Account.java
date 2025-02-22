@@ -1,5 +1,8 @@
 package model.entities;
 
+import model.exceptions.MisMatchBalanceException;
+import model.exceptions.WithdrawLimitException;
+
 public class Account {
     final private String holder;
     final private Integer accountNumber;
@@ -34,15 +37,21 @@ public class Account {
   }
 
   public void deposit(double amount){
+      if(amount<0){
+          throw new IllegalArgumentException("Ivalid typed amount");
+      }
       balance = balance+amount;
   }
 
   public void withdrawCash(double amount) throws Exception{
+      if(amount<0){
+          throw new IllegalArgumentException("Ivalid typed amount");
+      }
       if(!(balance>0 && amount<balance)){
-         throw new Exception("Bandido");
+         throw new MisMatchBalanceException("Balance not available");
       }
       if(amount>withdrawLimit){
-          throw new Exception("Do not test me");
+          throw new WithdrawLimitException("Withdraw limit exceeded");
       }
       balance = balance - amount;
   }
